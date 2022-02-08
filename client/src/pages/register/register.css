@@ -1,0 +1,103 @@
+.register {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 1) 115%
+    ),
+    url("https://i.ibb.co/JFYB5NR/register-Page-BG.jpg");
+  background-size: cover;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.registerWrapper {
+  flex: 1;
+  height: 100%;
+  padding: 18px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 40px;
+}
+
+.loginBtn {
+  background-color: red;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  padding: 7px 17px;
+  font-size: 17px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: "Numans", sans-serif;
+}
+
+.bottomContainer {
+  display: flex;
+  flex: 6;
+  justify-content: center;
+  align-content: center;
+}
+.registerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.registerContainer h1 {
+  color: white;
+  font-size: 300%;
+}
+
+.registerContainer h2,
+h3 {
+  color: white;
+  margin-top: 10px;
+}
+
+.cardForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardInput {
+  display: flex;
+  margin-top: 50px;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.formInputText {
+  flex: 7;
+  border-style: none;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  padding-left: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+}
+
+.submitBtn {
+  flex: 2;
+  width: 100%;
+  background-color: red;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  padding: 15px;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+}
