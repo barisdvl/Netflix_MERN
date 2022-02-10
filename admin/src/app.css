@@ -1,0 +1,25 @@
+body {
+    background-color: rgb(251, 251, 255);
+    overflow-x: hidden;
+  }
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  
+}
+
+.bottomContainer{
+    display: flex;
+    margin-top: 10px;
+    width: 98%;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+}

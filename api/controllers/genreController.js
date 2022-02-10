@@ -6,16 +6,16 @@ exports.createGenre = async (req, res) => {
     try {
       //create genre
       const genre = await Genre.create(req.body);
-      res.status(200).json(genre);
+      res.status(201).json(genre);
     } catch (error) {
       if (error.code === 11000) {
-        res.status(500).json("Genre already exist");
+        res.status(400).json("Genre already exist");
       } else {
         res.status(500).json(error);
       }
     }
   } else {
-    res.status(500).json("You are not allowed!");
+    res.status(403).json("You are not allowed!");
   }
 };
 
@@ -33,7 +33,7 @@ exports.updateGenre = async (req, res) => {
       res.status(500).json(error);
     }
   } else {
-    res.status(500).json("You are not allowed!");
+    res.status(403).json("You are not allowed!");
   }
 };
 
@@ -47,7 +47,7 @@ exports.deleteGenre = async (req, res) => {
       res.status(500).json(error);
     }
   } else {
-    res.status(500).json("You are not allowed!");
+    res.status(403).json("You are not allowed!");
   }
 };
 
@@ -57,6 +57,6 @@ exports.getAllGenres = async (req, res) => {
     const genres = await Genre.find();
     res.status(200).json(genres);
   } catch (error) {
-    res.status(500).json("You are not allowed!");
+    res.status(500).json(error);
   }
 };

@@ -1,6 +1,7 @@
 .watch {
   width: 100vw;
   height: 100vh;
+  margin: auto;
 }
 
 .back {
@@ -11,7 +12,7 @@
   left: 10px;
   color: white;
   cursor: pointer;
-  z-index: 2;
+  z-index: 3;
 }
 
 .watchVideo {

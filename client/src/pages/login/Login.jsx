@@ -4,33 +4,33 @@ import("./login.css");
 
 export default function Login() {
   return (
-    <div className="register">
-      <div className="wrapper">
-        <img className="logo" src="https://i.ibb.co/yyhVzZ7/logo.png" alt="" />
+    <div className="login">
+      <div className="loginWrapper">
+        <img className="loginLogo" src="https://i.ibb.co/yyhVzZ7/logo.png" alt="" />
       </div>
-      <div className="bottomContainer">
-        <div className="card">
-          <div className="cardHeader">
+      <div className="loginBottomContainer">
+        <div className="loginCard">
+          <div className="loginCardHeader">
             <h3>Sign In</h3>
           </div>
-          <form className="cardForm">
-            <div className="formInputItem">
+          <form className="loginCardForm">
+            <div className="loginFormInputItem">
               <input
                 type="text"
                 placeholder="Email adress"
-                className="formInputText"
+                className="loginFormInputText"
                 required
               />
             </div>
-            <div className="formInputItem">
+            <div className="loginFormInputItem">
               <input
                 type="password"
                 placeholder="Password"
-                className="formInputText"
+                className="loginFormInputText"
                 required
               />
             </div>
-            <div className="formSubmitBtn">
+            <div className="loginFormSubmitBtn">
               <input type="submit" value="LOG IN" className="loginButton" />
             </div>
             <div className="rememberMe">

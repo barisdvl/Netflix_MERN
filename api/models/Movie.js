@@ -9,10 +9,13 @@ const MovieSchema = new Schema(
       required: true,
       unique: true,
     },
-    desc: {
+    description: {
       type: String,
     },
     img: {
+      type: String,
+    },
+    imgTitle: {
       type: String,
     },
     trailer: {
@@ -24,8 +27,12 @@ const MovieSchema = new Schema(
     year: {
       type: String,
     },
-    genre: {
+    limit: {
       type: String,
+    },
+    genre: {
+      type: Schema.Types.ObjectId,
+      ref: "Genre",
     },
     isSeries: {
       type: Boolean,

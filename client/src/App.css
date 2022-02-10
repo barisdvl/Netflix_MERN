@@ -1,1 +1,8 @@
+body {
+  background-color: black;
+}
 
+.link {
+  color: inherit;
+  text-decoration: none;
+}

@@ -4,52 +4,64 @@ import {
   ThumbDownAltOutlined,
   ThumbUpAltOutlined,
 } from "@mui/icons-material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 import "./listItem.css";
 
-export default function ListItem(index) {
+export default function ListItem({ index, item }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [movie, setMovie] = useState({});
 
-  const trailer =
-    "https://media.w3.org/2010/05/sintel/trailer_hd.mp4";
-
+  useEffect(() => {
+    const getMovie = async () => {
+      try {
+        const res = await axios.get("/movies/find/" + item, {
+          headers: {
+            "Content-Type": "application/json;charset=UTF-8",
+            token:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDM2NDBjMzY4Yjc0YzQ5ODcwMDNlZSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0NDM5NTQ1OSwiZXhwIjoxNjQ0NjU0NjU5fQ.bez_RakHNuwrMGguuHNm9AU7Ug22h_WoVXYE_TzZl80",
+          },
+        });
+        setMovie(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getMovie();
+  }, [item]);
   return (
     <div
       className="listItem"
       style={{
-        left:
-          isHovered &&
-          Object.values(index) * 225 - 50 + Object.values(index) * 2.5,
+        left: isHovered && index * 225 - 50 + index * 2.5,
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <img
-        src="https://occ-0-2773-784.1.nflxso.net/dnm/api/v6/9pS1daC2n6UGc3dUogvWIPMR_OU/AAAABW2fI1GNxeeslsl4jEqHUb8E1z-C2J2yJjshKn0HqEgKUlGOnWeS5GYJlnJ_M0iiGH9G_V5AfBVtvzGbmzkBDOvY30F-RrPPCaYy_N98OIU60CXl.jpg?r=c0c"
-        alt=""
-      />
+      <img src={movie.img} alt="" />
       {isHovered && (
         <>
-          <video src={trailer} autoPlay loop></video>
+          <video src={movie.trailer} autoPlay loop></video>
           <div className="itemInfo">
             <div className="itemIcons">
-              <PlayArrow className="itemIcon" />
+              <Link to={{ pathname: `/watch/${movie._id}` }} className="link">
+                <PlayArrow className="itemIcon" />
+              </Link>
               <Add className="itemIcon" />
               <ThumbUpAltOutlined className="itemIcon" />
               <ThumbDownAltOutlined className="itemIcon" />
             </div>
             <div className="itemInfoTop">
               <span>1 hour 14 mins</span>
-              <span className="limit">+16</span>
-              <span>1999</span>
+              <span className="limit">{movie.limit}</span>
+              <span>{movie.year}</span>
             </div>
             <div className="itemDescription">
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem
+              {movie.description.substring(0, 90)}
             </div>
-            <div className="itemGenre">Action</div>
+            <div className="itemGenre">{movie.genre.title}</div>
           </div>
         </>
       )}

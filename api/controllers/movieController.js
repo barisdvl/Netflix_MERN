@@ -49,7 +49,7 @@ exports.deleteMovie = async (req, res) => {
 //GET A MOVİE
 exports.getMovie = async (req, res) => {
   try {
-    const movie = await Movie.findById(req.params.id);
+    const movie = await Movie.findById(req.params.id).populate("genre");
     res.status(200).json(movie);
   } catch (error) {
     res.status(500).json(error);
@@ -63,5 +63,27 @@ exports.getAllMovies = async (req, res) => {
     res.status(200).json(movies);
   } catch (error) {
     res.status(500).json(error);
+  }
+};
+
+//GET RANDOM
+exports.getRandom = async (req, res) => {
+  const type = req.query.type;
+  let movie;
+  try {
+    if (type === "series") {
+      movie = await Movie.aggregate([
+        { $match: { isSeries: true } },
+        { $sample: { size: 1 } },
+      ]);
+    } else {
+      movie = await Movie.aggregate([
+        { $match: { isSeries: false } },
+        { $sample: { size: 1 } },
+      ]);
+    }
+    res.status(200).json(movie);
+  } catch (err) {
+    res.status(500).json(err);
   }
 };

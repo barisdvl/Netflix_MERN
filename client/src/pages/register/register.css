@@ -1,5 +1,5 @@
 .register {
-  margin: 0;
+  margin: auto;
   width: 100vw;
   height: 100vh;
   top: 0;
@@ -25,7 +25,7 @@
 }
 
 .logo {
-  height: 40px;
+  height: 40px; 
 }
 
 .loginBtn {
@@ -72,8 +72,8 @@ h3 {
 .cardInput {
   display: flex;
   margin-top: 50px;
-  align-content: center;
-  justify-content: center;
+  align-items: center;
+  justify-items: center;
   width: 100%;
 }
 
@@ -82,11 +82,11 @@ h3 {
   border-style: none;
   border-radius: 5px;
   width: 100%;
-  height: 100%;
+  height: 90%;
   padding-left: 10px;
   font-size: 15px;
   font-weight: 600;
-  border: none;
+  border: none; 
 }
 
 .submitBtn {

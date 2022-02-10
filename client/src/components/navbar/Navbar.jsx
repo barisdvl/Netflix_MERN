@@ -1,5 +1,6 @@
 import { ArrowDropDown, Notifications, Search } from "@mui/icons-material";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import("./navbar.css");
 
@@ -19,11 +20,21 @@ export default function Navbar() {
             src="https://i.ibb.co/yyhVzZ7/logo.png"
             alt=""
           />
-          <span>Homepage</span>
-          <span>Series</span>
-          <span>Movies</span>
-          <span>New and Popular</span>
-          <span>My List</span>
+          <Link to="/" className="link">
+            <span>Homepage</span>
+          </Link>
+          <Link to="/series" className="link">
+            <span>Series</span>
+          </Link>
+          <Link to="/movies" className="link">
+            <span>Movies</span>
+          </Link>
+          <Link to="/" className="link">
+            <span>New and Popular</span>
+          </Link>
+          <Link to="/" className="link">
+            <span>My List</span>
+          </Link>
         </div>
         <div className="right">
           <Search className="icon" />

@@ -1,11 +1,10 @@
-body{
-    background-color: black;
-}
 .home {
-    width: 100%;
    display: flex;
    flex-direction: column;
    margin-top: auto;
    overflow: hidden;
 }
 
+.bottomHome{
+    margin-bottom: 50px;
+}

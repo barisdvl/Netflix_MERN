@@ -22,9 +22,11 @@
 .logo {
   height: 25px;
   margin-right: 40px;
+  margin-top: 25px;
 }
 
 .left {
+  display: flex;
   padding: 0px 50px;
   align-items: center;
 }
@@ -32,6 +34,8 @@
 .left span {
   margin-right: 20px;
   cursor: pointer;
+  width: 600px;
+  font-size: 15px;
 }
 
 .right {
