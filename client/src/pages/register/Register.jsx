@@ -1,26 +1,41 @@
+import axios from "axios";
 import { useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import("./register.css");
 
 export default function Register() {
-  const [isEmail, setIsEmail] = useState("");
-  const [isPassword, setIsPassword] = useState("");
+  const [email, setIsEmail] = useState("");
+  const [password, setIsPassword] = useState("");
+  const [username, setIsUsername] = useState("");
+  const navigate = useNavigate();
 
   let emailRef = useRef();
   let passwordRef = useRef();
+  let usernameRef = useRef();
 
   const handleStart = () => {
     setIsEmail(emailRef.current.value);
   };
-  const handleFinish = () => {
+  const handleFinish = async (e) => {
+    e.preventDefault();
     setIsPassword(passwordRef.current.value);
+    setIsUsername(usernameRef.current.value);
+    try {
+      await axios.post("/auth/register", { username, email, password });
+      navigate("/login");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <div className="register">
       <div className="registerWrapper">
         <img className="logo" src="https://i.ibb.co/yyhVzZ7/logo.png" alt="" />
-        <button className="loginBtn">Sign In</button>
+        <Link to="/login" className="link">
+          <button className="loginBtn">Sign In</button>
+        </Link>
       </div>
       <div className="bottomContainer">
         <div className="registerContainer">
@@ -31,8 +46,8 @@ export default function Register() {
               Ready to watch? Enter your email to create or restart your
               membership.
             </h3>
-            {!isEmail ? (
-              <div className="cardInput">
+            {!email ? (
+              <form className="cardInput">
                 <input
                   className="formInputText"
                   type="text"
@@ -43,16 +58,25 @@ export default function Register() {
                 <button className="submitBtn" onClick={handleStart}>
                   Get Started
                 </button>
-              </div>
+              </form>
             ) : (
               <form className="cardInput">
-                <input
-                  className="formInputText"
-                  type="password"
-                  placeholder="Password"
-                  required
-                  ref={passwordRef}
-                />
+                <div className="cardInputRev">
+                  <input
+                    className="formInputTextRev"
+                    type="text"
+                    placeholder="Username"
+                    required
+                    ref={usernameRef}
+                  />
+                  <input
+                    className="formInputTextRev"
+                    type="password"
+                    placeholder="Password"
+                    required
+                    ref={passwordRef}
+                  />
+                </div>
                 <button className="submitBtn" onClick={handleFinish}>
                   Finish
                 </button>

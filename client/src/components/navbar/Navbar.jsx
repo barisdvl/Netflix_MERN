@@ -11,6 +11,11 @@ export default function Navbar() {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
     return () => (window.onscroll = null);
   };
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    localStorage.clear();
+  };
   return (
     <div className={isScrolled ? "navbar scrolled" : "navbar"}>
       <div className="container">
@@ -49,7 +54,7 @@ export default function Navbar() {
             <ArrowDropDown className="icon" />
             <div className="options">
               <span>Settings</span>
-              <span>Logout</span>
+              <span onClick={handleLogout}>Logout</span>
             </div>
           </div>
         </div>

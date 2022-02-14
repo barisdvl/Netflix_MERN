@@ -20,7 +20,7 @@ export default function Featured({ type }) {
         headers: {
           "Content-Type": "application/json;charset=UTF-8",
           token:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDM2NDBjMzY4Yjc0YzQ5ODcwMDNlZSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0NDM5NTQ1OSwiZXhwIjoxNjQ0NjU0NjU5fQ.bez_RakHNuwrMGguuHNm9AU7Ug22h_WoVXYE_TzZl80",
+          "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
         },
       });
       setGenres(res.data);
@@ -35,7 +35,7 @@ export default function Featured({ type }) {
         headers: {
           "Content-Type": "application/json;charset=UTF-8",
           token:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDM2NDBjMzY4Yjc0YzQ5ODcwMDNlZSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0NDM5NTQ1OSwiZXhwIjoxNjQ0NjU0NjU5fQ.bez_RakHNuwrMGguuHNm9AU7Ug22h_WoVXYE_TzZl80",
+          "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
         },
       });
       setContent(res.data[0]);

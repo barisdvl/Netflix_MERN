@@ -1,12 +1,27 @@
 import { Checkbox } from "@mui/material";
-
-import("./login.css");
+import { useContext, useState } from "react";
+import "./login.css";
+import { login } from "../../authContext/apiCalls";
+import { AuthContext } from "../../authContext/AuthContext";
 
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { dispatch } = useContext(AuthContext);
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    login({ email, password }, dispatch);
+  };
+
   return (
     <div className="login">
       <div className="loginWrapper">
-        <img className="loginLogo" src="https://i.ibb.co/yyhVzZ7/logo.png" alt="" />
+        <img
+          className="loginLogo"
+          src="https://i.ibb.co/yyhVzZ7/logo.png"
+          alt=""
+        />
       </div>
       <div className="loginBottomContainer">
         <div className="loginCard">
@@ -20,6 +35,7 @@ export default function Login() {
                 placeholder="Email adress"
                 className="loginFormInputText"
                 required
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="loginFormInputItem">
@@ -28,10 +44,16 @@ export default function Login() {
                 placeholder="Password"
                 className="loginFormInputText"
                 required
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <div className="loginFormSubmitBtn">
-              <input type="submit" value="LOG IN" className="loginButton" />
+              <input
+                type="submit"
+                value="LOG IN"
+                className="loginButton"
+                onClick={handleLogin}
+              />
             </div>
             <div className="rememberMe">
               <div className="checkbox">
