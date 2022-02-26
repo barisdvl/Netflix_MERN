@@ -6,17 +6,20 @@ import Register from "./pages/register/Register";
 import Login from "./pages/login/Login";
 import Watch from "./pages/watch/Watch";
 import AuthContextProvider, { AuthContext } from "./authContext/AuthContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import NotFound from "./pages/notFound/NotFound";
 
 function App() {
   const { user } = useContext(AuthContext);
+  useEffect(() => {
+    console.log("app page ", user);
+  }, [user]);
 
   return (
     <AuthContextProvider>
       <Router>
         <div className="container">
-          <Routes>            
+          <Routes>
             <Route path="*" element={user ? <NotFound /> : <Register />} />
             <Route path="/" element={user ? <Home /> : <Register />} />
             <Route path="/register" element={!user ? <Register /> : <Home />} />

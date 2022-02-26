@@ -1,12 +1,11 @@
 import { Lock, Person } from "@mui/icons-material";
 import { Alert, Snackbar } from "@mui/material";
 import axios from "axios";
-import PropTypes from "prop-types";
 import { useState } from "react";
 import "./login.css";
 
 export default function Login({ setLogin }) {
-  const [username, setUsername] = useState();
+  const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [flash, setFlash] = useState({
     severity: "info",
@@ -17,9 +16,9 @@ export default function Login({ setLogin }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let loginForm = new FormData();
-    loginForm.append("username", username);
+    loginForm.append("email", email);
     loginForm.append("password", password);
-    
+
     await axios
       .post("/users/login", loginForm, {})
       .then((user) => {
@@ -56,7 +55,7 @@ export default function Login({ setLogin }) {
             <h3>LOGIN</h3>
           </div>
           <div className="cardBody">
-            <Snackbar
+          <Snackbar
               open={showFlash}
               anchorOrigin={{ vertical: "top", horizontal: "center" }}
               autoHideDuration={6000}
@@ -71,16 +70,15 @@ export default function Login({ setLogin }) {
                 {flash.message}
               </Alert>
             </Snackbar>
-
             <form className="cardForm" onSubmit={handleSubmit}>
               <div className="formInputItem">
                 <Person className="formInputIcon" />
                 <input
                   type="text"
-                  placeholder="username"
+                  placeholder="email"
                   className="formInputText"
                   required
-                  onChange={(e) => setUsername(e.target.value)}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="formInputItem">
@@ -103,7 +101,3 @@ export default function Login({ setLogin }) {
     </div>
   );
 }
-
-Login.propTypes = {
-  setLogin: PropTypes.func.isRequired,
-};

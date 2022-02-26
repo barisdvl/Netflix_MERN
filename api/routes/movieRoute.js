@@ -1,7 +1,7 @@
 const router = require("express").Router();
 
 const movieController = require("../controllers/movieController");
-const verify = require("../verifyToken");
+const verify = require("../middlewares/verifyToken");
 
 router.route("/").post(verify, movieController.createMovie);
 router.route("/:id").put(verify, movieController.updateMovie);

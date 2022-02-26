@@ -15,13 +15,14 @@ import { useState } from "react";
 
 function App() {
   const [login, setLogin] = useState(false);
+
   if (!login) {
     return <Login setLogin={setLogin} />;
   }
   return (
     <Router>
       <div className="container">
-        <Topbar setLogin={setLogin} />
+        <Topbar setLogin={setLogin}/>
         <div className="bottomContainer">
           <Sidebar />
           <Routes>
@@ -41,20 +42,3 @@ function App() {
 }
 
 export default App;
-
-/* <Router>
-      <Topbar />
-      <div className="container">
-        <Sidebar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/users" element={<UserList />} />
-          <Route path="/user/:userId" element={<User />} />
-          <Route path="/createUser" element={<CreateUser />} />
-          <Route path="/products" element={<ProductList />} />
-          <Route path="/product/:productId" element={<Product />} />
-          <Route path="/product/edit/:productId" element={<EditProduct />} />
-          <Route path="/createProduct" element={<CreateProduct />} />
-        </Routes>
-      </div>
-    </Router> */

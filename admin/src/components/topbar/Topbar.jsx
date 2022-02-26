@@ -10,6 +10,7 @@ export default function Topbar({ setLogin }) {
   const logout = async () => {
     setLogin("");
   };
+
   return (
     <div className="topbar">
       <div className="topbarWrapper">

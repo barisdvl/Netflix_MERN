@@ -110,6 +110,7 @@
   font-family: "Numans", sans-serif;
   background-color: red !important;
   justify-content: center;
+  align-items: center;
   cursor: pointer;
 }
 

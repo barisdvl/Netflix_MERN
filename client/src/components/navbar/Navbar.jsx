@@ -1,20 +1,22 @@
 import { ArrowDropDown, Notifications, Search } from "@mui/icons-material";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import("./navbar.css");
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
 
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
     return () => (window.onscroll = null);
-  };
+  };  
 
-  const handleLogout = (e) => {
+  const handleLogout = async (e) => {
     e.preventDefault();
     localStorage.clear();
+    navigate("/");
   };
   return (
     <div className={isScrolled ? "navbar scrolled" : "navbar"}>

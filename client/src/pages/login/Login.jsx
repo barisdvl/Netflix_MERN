@@ -1,13 +1,21 @@
 import { Checkbox } from "@mui/material";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./login.css";
 import { login } from "../../authContext/apiCalls";
 import { AuthContext } from "../../authContext/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { dispatch } = useContext(AuthContext);
+  const { state, dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (state.user) {      
+      navigate("/", { replace: true });
+    }
+  }, [state, navigate]);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -48,12 +56,14 @@ export default function Login() {
               />
             </div>
             <div className="loginFormSubmitBtn">
-              <input
+              <button
                 type="submit"
-                value="LOG IN"
                 className="loginButton"
                 onClick={handleLogin}
-              />
+                disabled={state.isFetching}
+              >
+                LOG IN
+              </button>
             </div>
             <div className="rememberMe">
               <div className="checkbox">
